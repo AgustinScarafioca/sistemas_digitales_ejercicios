@@ -1,0 +1,11 @@
+# Verilator output and waveforms
+**/obj_dir/
+**/*.vcd
+**/*.fst
+
+# Editor and operating-system files
+.DS_Store
+*~
+*.swp
+*.swo
+
