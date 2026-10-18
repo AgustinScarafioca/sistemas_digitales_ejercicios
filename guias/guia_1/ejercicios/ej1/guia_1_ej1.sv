@@ -7,15 +7,29 @@ module guia1_ej1 (
   output logic [4:0] lhs,
   output logic [4:0] rhs
 );
-  // lhs[0] = x                         rhs[0] = x*y + x*~y
-  // lhs[1] = (x+y)*(x+~y)              rhs[1] = x
-  // lhs[2] = x*z                       rhs[2] = (x+y)*(x+~y)*(~x+z)
-  // lhs[3] = ~(x+y*z)                  rhs[3] = ~x*(~y+~z)
-  // lhs[4] = x^(y*z)                   rhs[4] = (x^y)*(x^z)
+  // Punto 1
+  // x = x*y + x*~y
+  assign lhs[0] = x;
+  assign rhs[0] = (x & y) | (x & ~y);
 
-  // TODO: reemplazar estos valores temporales por las cinco expresiones.
-  always_comb begin
-    lhs = '0;
-    rhs = '0;
-  end
+  // Punto 2
+  // (x+y)*(x+~y) = x
+  assign lhs[1] = (x | y) & (x | ~y);
+  assign rhs[1] = x;
+
+  // Punto 3
+  // x*z = (x+y)*(x+~y)*(~x+z)
+  assign lhs[2] = x & z;
+  assign rhs[2] = (x | y) & (x | ~y) & (~x | z);
+
+  // Punto 4
+  // ~(x+y*z) = ~x*(~y+~z)
+  assign lhs[3] = ~(x | (y & z));
+  assign rhs[3] = ~x & (~y | ~z);
+
+  // Punto 5 
+  // x^(y*z) = (x^y)*(x^z)
+  assign lhs[4] = x ^ (y & z);
+  assign rhs[4] = (x ^ y) & (x ^ z);
+
 endmodule
