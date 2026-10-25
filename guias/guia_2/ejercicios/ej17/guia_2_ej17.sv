@@ -1,4 +1,23 @@
-// Plantilla inicial del ejercicio 17 de la Guía 2.
-// Implementar el diseño y declarar la interfaz solicitada en la consigna.
-// Tema: Registro extensor de signo: guardar dos bits y emitirlos extendidos a cuatro bits en complemento a dos.
+module registro_extensor (
+    input  logic       clk,
+    input  logic       load,
+    input  logic       ext,
+    input  logic [3:0] data_in,
+    output logic [3:0] out
+);
 
+    logic [3:0] registro;
+
+    always_ff @(posedge clk) begin
+        if (load)
+            registro <= data_in;
+    end
+
+    always_comb begin
+        if (ext)
+            out = {{2{registro[1]}}, registro[1:0]};
+        else
+            out = registro;
+    end
+
+endmodule
