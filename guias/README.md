@@ -11,3 +11,5 @@ Al agregar una guía, incluir su enunciado, README y Makefile. Al agregar un
 ejercicio, incluir un README breve, un Makefile local y un testbench terminado
 en `_tb.sv`. Declarar las fuentes explícitamente en el Makefile para que la
 simulación y HDL Studio usen la misma lista de módulos.
+
+La Guía 3 cubre los 11 puntos de `pdfs/guia-representacion.pdf`; el ejercicio 11 tiene plantilla SystemVerilog y testbench.
